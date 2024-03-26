@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>Document</title>
+    <!-- Styles for the document -->
+    <style>
+        /* Flex container for centering content */
+        .sub-body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Styles for the bill generation container */
+        .bill_generation {
+            background-color: #fff;
+            box-shadow: 0 0 10px #365486;
+            padding: 20px;
+            border-radius: 5px;
+            width: 350px;
+            margin-top: 100px;
+            margin-bottom: 10px;
+        }
+
+        /* Styles for text elements within the bill generation container */
+        .bill_generation p,
+        pre {
+            color: #365486;
+            margin-bottom: 8px;
+        }
+
+        /* Styles for the invoice heading */
+        #invoice {
+            display: inline-block;
+            margin-bottom: 10px;
+            font-size: 30px;
+            font-weight: bolder;
+            color: #0f1035;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Flex container for the entire body -->
+    <div class="sub-body">
+        <!-- Include the navigation bar -->
+        {% include 'navbar.html' %}
+        <!-- Bill generation container -->
+        <div class="bill_generation">
+            <!-- Logo image -->
+            <img src="/static/car-logo.png" width="150px" height="100px">
+            <!-- Invoice heading -->
+            <p id="invoice">INVOICE</p>
+            <!-- Customer name -->
+            <pre>Name : {{ reservation.first_name }} {{ reservation.last_name }}</pre>
+            <!-- Security key -->
+            <p>Security Key : {{ car.car_name[:3]|upper }}{{ car.id }}</p>
+            <!-- Car name -->
+            <p>{{ car.car_name }}</p>
+            <!-- Pick-up details -->
+            <pre>Pick-up : {{ reservation.pick_up_date }} , {{ reservation.pick_up_time }}</pre>
+            <!-- Drop-off details -->
+            <pre>Drop-off : {{ reservation.drop_off_date }} , {{ reservation.drop_off_time }}</pre>
+            <!-- Total bill -->
+            <p>Total = ₹ {{ reservation.bill }}</p>
+        </div>
+    </div>
+
+    <!-- Include the footer -->
+    {% include 'footer.html' %}
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Contact Us</title>
+    <!-- Styles for the document -->
+    <style>
+        /* Styles for the contact content container */
+        .cntct-content {
+            margin-top: 100px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        /* Styles for the contact image container */
+        .cnt-img {
+            background: url('/static/contact.jpg');
+            border: 2px solid #0f1035;
+            height: 500px;
+            width: 100%;
+            border-radius: 50px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 10px 10px 0 #365486;
+            background-color: white;
+        }
+
+        /* Styles for the contact details container */
+        .details {
+            margin-top: 200px;
+            margin-left: 296px;
+            transform: rotate(-2deg);
+            font-size: 18px;
+            color: #365486;
+        }
+
+        /* Styles for individual contact details */
+        .details p {
+            margin-top: 5px;
+            font-weight: bold;
+        }
+
+        .details a {
+            text-decoration: none;
+            color: #365486;
+        }
+
+        .details a:hover {
+            color: #0f1035;
+        }
+    </style>
+</head>
+<body>
+    <!-- Include the navigation bar -->
+    {% include 'navbar.html' %}
+    
+    <!-- Contact content container -->
+    <div class="cntct-content">
+        <!-- Contact image container -->
+        <div class="cnt-img">
+            <!-- Contact details container -->
+            <div class="details">
+                <p>Contact Us</p>
+                <p>Email : <a href="mailto:kumar180kunal@gmail.com">kumar180kunal@gmail.com</a></p>
+                <p>Mobile No. : 9412933739</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include the footer -->
+    {% include 'footer.html' %}
+</body>
+</html>

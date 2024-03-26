@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <!-- Title of the document -->
+    <title>Login Form</title>
+    <!-- Global styles -->
+    <style>
+        /* Styling for the body */
+        .sub-body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Styling for the login form container */
+        .login_form {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            height: 410px;
+            display: block;
+        }
+
+        /* Styling for the form */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Styling for labels */
+        label {
+            margin-bottom: 5px;
+            font-size: smaller;
+        }
+
+        /* Styling for input fields */
+        input {
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        /* Styling for the submit button */
+        button {
+            padding: 10px;
+            background-color: #365486;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Styling for button hover effect */
+        button:hover {
+            background-color: #425d8d;
+        }
+
+        /* Styling for the logo */
+        .logo {
+            width: 135px;
+            height: 87px;
+            margin-left: 39px;
+        }
+
+        /* Styling for the 'Create Account Now' link */
+        #new-acc {
+            color: #365486;
+            border: 2px solid #0f1035;
+            border-radius: 4px;
+            padding: 2px;
+            margin-left: 30px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login form body -->
+    <div class="sub-body">
+        <!-- Including the navbar -->
+        {% include 'navbar.html' %}
+        
+        <!-- Login form container -->
+        <div class="login_form">
+            <h2 style="text-align: center; color: #0f1035">Welcome</h2>
+            <!-- CaRent logo -->
+            <img src="static\car-logo.png" class="logo">
+            <br><br>
+            <!-- Login form -->
+            <form action="/login" method="post" id="log-frm">
+                <label for="UserName">Login_Id</label>
+                <input type="text" id="UserName" name="UserName" required placeholder="Login_Id" maxlength="20">
+
+                <label for="Password">Password</label>
+                <input type="password" id="Password" name="Password" placeholder="Password" maxlength="15">
+
+                <br>
+                <!-- Submit button -->
+                <button type="submit">Submit</button>
+            </form>
+            <!-- 'Create Account Now' link -->
+            <pre style="font-size: 10px; text-align: center; margin-top: 8px;">Don't have an Account?</pre><br>
+            <a href="/register-form" id="new-acc">Create Account Now</a>
+        </div>
+    </div>
+
+    <!-- Including the footer -->
+    {% include 'footer.html' %}
+    
+    <!-- Displaying alert if there is a message -->
+    {% if msg %}
+        <script>
+            alert("{{msg|safe}}");
+        </script>
+        {% set msg = None %}
+    {% endif %}
+    
+    <!-- Script for resetting form fields -->
+    <script>
+        // Function to reset form fields
+        function resetForm() {
+            document.getElementById("log-frm").reset();
+        }
+    
+        // Reset the form fields when the page is shown from the cache
+        window.addEventListener("pageshow", function(event) {
+            if (event.persisted) {
+                resetForm();
+            }
+        });
+    
+        // Reset the form fields when the document is fully loaded
+        document.addEventListener("DOMContentLoaded", function() {
+            resetForm();
+        });
+    </script>
+</body>
+</html>

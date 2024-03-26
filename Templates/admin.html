@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Simple Form</title>
+
+    <style>
+        /* Flex container for centering content */
+        .sub-body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Styles for the form container */
+        .admin_form {
+            background-color: #fff;
+            box-shadow: 0 0 10px #365486;
+            padding: 20px;
+            border-radius: 5px;
+            width: 350px;
+            margin-top: 100px;
+            margin-bottom: 10px;
+        }
+
+        /* Styles for form details */
+        .admin_details label {
+            font-weight: bold;
+            padding: 10px 0;
+            margin-left: 30px;
+            color: #0f1035;
+        }
+
+        /* Styles for input fields and textarea */
+        .admin_details input,
+        textarea {
+            width: 80%;
+            padding: 8px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            margin-left: 30px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* Styles for the submit button */
+        button {
+            background-color: #365486;
+            color: white;
+            cursor: pointer;
+            width: 80px;
+            margin-left: 30px;
+            padding: 8px 15px;
+        }
+
+        /* Styles for button on hover */
+        button:hover {
+            background-color: #dcf2f1;
+            color: #365486;
+        }
+    </style>
+</head>
+<body>
+    <div class="sub-body">
+        <!-- Include the navigation bar -->
+        {% include 'navbar.html' %}
+
+        <!-- Form container -->
+        <div class="admin_form">
+            <!-- Form details section -->
+            <div class="admin_details">
+                <!-- Form for uploading car details -->
+                <form action="/upload" method="post" enctype="multipart/form-data">
+                    <!-- Input field for first name -->
+                    <label for="firstName">First Name:</label><br>
+                    <input type="text" id="firstName" name="firstName" required placeholder="First Name">
+
+                    <br>
+
+                    <!-- Input field for last name -->
+                    <label for="lastName">Last Name:</label><br>
+                    <input type="text" id="lastName" name="lastName" required placeholder="Last Name">
+
+                    <br>
+
+                    <!-- Input field for email -->
+                    <label for="email">Email:</label><br>
+                    <input type="email" id="email" name="email" required placeholder="Email_Id">
+
+                    <br>
+
+                    <!-- Input field for car name -->
+                    <label for="carName">CarName:</label><br>
+                    <input type="text" id="carName" name="carName" required placeholder="Car Name">
+
+                    <br>
+
+                    <!-- Input field for car price per day -->
+                    <label for="pricePerDay">Price:</label><br>
+                    <input type="text" id="pricePerDay" name="pricePerDay" required placeholder="Car Price Per Day">
+
+                    <br>
+
+                    <!-- Input field for uploading car image -->
+                    <label for="image">Upload Car Image</label><br>
+                    <input type="file" name="image" accept="image/*" required>
+
+                    <br>
+
+                    <!-- Textarea for entering car details -->
+                    <label for="carDetails">Enter Car Details:</label>
+                    <textarea id="carDetails" name="carDetails" rows="5" cols="100"></textarea>
+                    <br>
+
+                    <!-- Submit button -->
+                    <button type="submit">Upload</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    
+    <!-- Include the footer -->
+    {% include 'footer.html' %}
+
+</body>
+</html>

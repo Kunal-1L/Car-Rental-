@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Document title -->
+    <title>Document</title>
+    <style>
+        /* Styles for the "Why choose us?" message container */
+        .about-msg {
+            margin-top: 100px;
+            margin-left: 5px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
+        /* Styles for the list of reasons to choose the service */
+        .choose-list {
+            list-style-type: square;
+            color: #0f1035;
+            font-size: 17px;
+        }
+
+        /* Styles for the outlined text with shadow */
+        .outlined-text {
+            font-size: 60px;
+            font-weight: bold;
+            color: #ffffff;
+            text-shadow: -1px -1px 0 #0f1035, 1px -1px 0 #0f1035, -1px 1px 0 #0f1035, 1px 1px 0 #0f1035;
+            margin: 0;
+            margin-top: 200px;
+            margin-left: 20px;
+        }
+
+        /* Styles for individual list items */
+        .choose-list li {
+            margin-bottom: 5px;
+            margin-right: 30px;
+        }
+
+        /* Styles for preformatted text block */
+        pre {
+            white-space: pre-line;
+            line-height: 1.5;
+            margin-left: 5px;
+            margin-right: 5px;
+            color: #0f1035;
+            font-size: 17px;
+            margin-top: 20px;
+            border: 2px solid #365486;
+            border-radius:3px;
+            padding:10px;
+        }
+
+        /* Styles for the circular background image container */
+        #back-image {
+            background: url('/static/car-logo.png');
+            border: 2px solid #0f1035;
+            border-radius: 50%;
+            height: 500px;
+            width: 500px;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            box-shadow: 0 10px 10px 0 #365486;
+            background-color: white;
+        }
+
+        /* Styles for the contact link container */
+        .cntc-link {
+            margin-top:10px;
+            margin-left:5px;
+            font-size:18px;
+        }
+
+        /* Styles for the contact link */
+        .cntc-link a {
+            text-decoration: none;
+            color:#0f1035;
+            font-weight: bold;
+        }
+
+        /* Styles for the contact link on hover */
+        .cntc-link a:hover {
+            color:#365486;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Include the navigation bar -->
+    {% include 'navbar.html' %}
+    
+    <!-- Container for the "Why choose us?" message -->
+    <div class="about-msg">
+        <!-- Circular background image container -->
+        <div id="back-image"></div>
+        
+        <!-- Container for the reasons to choose the service -->
+        <div class="choose">
+            <!-- Outlined text -->
+            <p class="outlined-text">Why choose us?</p><br>
+            
+            <!-- List of reasons -->
+            <ul class="choose-list">
+                <li>book directly through a supplier, and not through a broker;</li>
+                <li>vehicle make and model guaranteed, not “similar” to those selected;</li>
+                <li>same day rental;</li>
+                <li>hotel and airport delivery/collection;</li>
+                <li>flexible terms and payment options for long term rental;</li>
+                <li>“commission-free” rental;</li>
+                <li>24/7 telephone contact;</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Preformatted text block -->
+    <pre>
+        We offer a varied fleet of cars, ranging from the compact Toyota Yaris to the 8-seater VW Multivan. All our vehicles have air conditioning,  power steering, electric windows.
+        All our vehicles are bought and maintained at official dealerships only.Automatic transmission cars are available in every booking class.
+        We pride ourselves on personalized service, great cars and excellent rates.
+    </pre>
+    
+    <!-- Contact link container -->
+    <div class="cntc-link">
+        <!-- Contact link -->
+        For any query <a href="/contact">Click Here</a>
+    </div>
+    
+    <!-- Include the footer -->
+    {% include 'footer.html' %}
+</body>
+</html>

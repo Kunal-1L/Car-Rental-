@@ -1,0 +1,174 @@
+<!-- HTML Document Structure -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags for character set and viewport -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Styling for Slideshow -->
+    <style>
+        /* Styling for individual slides */
+        .mySlides {
+            display: none;
+            animation: slideRightToLeft 1.5s;
+        }
+
+        /* Container for the slideshow */
+        .slideshow-container {
+            margin-top: 100px;
+        }
+
+        /* Styling for active slide */
+        .active {
+            background-color: #717171;
+        }
+
+        /* Fading animation for slides */
+        .fade {
+            animation-name: fade;
+            animation-duration: 3s;
+        }
+
+        /* Keyframes for fading animation */
+        @keyframes fade {
+            from {opacity: .8} 
+            to {opacity: 1}
+        }
+
+        /* Slide right to left animation */
+        @keyframes slideRightToLeft {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        /* Styling for Login/Signup container */
+        .login-sign {
+            width: 400px;
+            height: 150px;
+            margin-left: 430px;
+            border: 2px solid #0f1035;
+            text-align: center;
+            padding: 10px;
+            border-radius: 205px;
+            background-color: white;
+            box-shadow: 10px #365486;
+        }
+
+        /* Styling for Login/Signup buttons */
+        .reg {
+            width: 248px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            justify-content: center;
+            margin-left: 70px;
+        }
+
+        /* Styling for Login and Signup links */
+        #log-link {
+            position: static;
+            margin: -2px -39px 0 0;
+            padding: 10px 25px;
+            background-color: #365486;
+            border-radius: 25px;
+            z-index: 2;
+        }
+
+        #sign-link {
+            position: static;
+            margin: -2px 10px 0 0;
+            padding: 10px 20px 10px 39px;
+            border-radius: 25px;
+            background-color: #7fc7d9;
+            z-index: 1;
+        }
+
+        /* Styling for hover effect on links */
+        #log-link:hover,
+        #sign-link:hover {
+            background-color: #dcf2f1;
+            color: #0f1035;
+        }
+
+        /* Styling for links and their hover effect */
+        #log-link a,
+        #sign-link a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        #log-link:hover a,
+        #sign-link:hover a {
+            color: #0f1035; /* Change link color on hover */
+            /* Change background color on hover */
+        }
+    </style>
+
+    <!-- Document Title -->
+    <title>Document</title>
+</head>
+<body>
+    <!-- Including the navigation bar -->
+    {% include 'navbar.html' %}
+
+    <!-- Slideshow container -->
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+            <img src="static\2019-BMW-X7-Launched-In-India-Price-Specs-Interior-Features.jpg" height="400px" width="100%">
+        </div>
+        <div class="mySlides fade">
+            <img src="static\559212.jpeg" height="400px" width="100%">
+        </div>
+        <div class="mySlides fade">
+            <img src="static\bmw_lead_2_7series.jpg" height="400px" width="100%">
+        </div>
+    </div>
+
+    <!-- Login/Signup container -->
+    <br>
+    <div class="login-sign">
+        <div class="wel-user">
+            <h1 style="color:#0f1035">Welcome To CaRent</h1>
+            <h5 style="margin-left:225px; color:#365486">go With us</h5>
+        </div>
+        <!-- Login/Signup buttons -->
+        <div class="reg">
+            <div id="log-link"><a href="/login-form" >Login</a></div>
+            <div id="sign-link"><a href="/register-form"><pre> Sign Up</pre></a></div>
+        </div>
+        <!-- Admin link -->
+        <div class="admin">
+            <p style="color:#365486">If you are Admin <a href="/admin" style="font-weight: bold;color:#0f1035; text-decoration: none;">Click Here</a></p>
+        </div>
+    </div>
+    <!-- Including the footer -->
+    {% include 'footer.html' %}
+
+    <!-- Script for slideshow -->
+    <script>
+        let slideIndex = 0;
+
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }    
+            slides[slideIndex-1].style.display = "block";  
+            setTimeout(showSlides, 6000); // Change image every 8 seconds
+        }
+
+        showSlides(); // Call the function to start the slideshow
+    </script>
+</body>
+</html>

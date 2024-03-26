@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Registration Form</title>
+    <style>
+        /* Styling for the registration form */
+        .sub-body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 115vh;
+        }
+
+        .register_form {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 250px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-size: smaller;
+        }
+
+        input {
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #0f1035;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #425d8d;
+        }
+
+        .logo {
+            width: 135px;
+            height: 87px;
+            margin-left: 39px;
+        }
+
+        #move-log {
+            color: #0f1035;
+            text-decoration: none;
+            margin-left: 120px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        #move-log:hover {
+            color: #365486;
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <!-- Container for the registration form -->
+    <div class="sub-body">
+        <!-- Registration Form -->
+        <div class="register_form">
+            <h2 style="text-align: center; color: #0f1035;">Welcome</h2>
+            <!-- Logo for the registration form -->
+            <img src="static\car-logo.png" class="logo">
+            <br><br>
+            <!-- Form for user registration -->
+            <form action="/register" method="post">
+                <label for="UserName">Login_Id</label>
+                <input type="text" id="UserName" name="UserName" required placeholder="Login_Id" maxlength="20">
+
+                <label for="Password">Password</label>
+                <input type="password" id="Password" name="Password" placeholder="Password" maxlength="15">
+
+                <label for="Contact">Phone Number</label>
+                <input type="text" id="Contact" name="Contact" placeholder="Contact" maxlength="10">
+                <br>
+                <!-- Submit button for the registration form -->
+                <button type="submit">Submit</button>
+            </form>
+            <!-- Link to redirect to the login page -->
+            <pre style="font-size: 13px; margin-top: 8px; text-align:right;color:#365486;">If you registered before </pre>
+            <a href="/login-form" id="move-log">Please Login</a>
+        </div>
+    </div>
+    {% include 'footer.html' %}
+    <!-- Displaying a message using JavaScript if available -->
+    {% if msg %}
+        <script>
+            alert("{{msg|safe}}");
+        </script>
+    {% endif %}
+</body>
+</html>

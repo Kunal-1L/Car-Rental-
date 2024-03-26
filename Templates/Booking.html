@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>Booking Information</title>
+    <!-- Add your additional styling or scripts here -->
+    <style>
+        /* Styles for the car details section */
+        .car-details {
+            margin-top: 100px;
+        }
+
+        /* Styles for the car image container */
+        .car-image {
+            display: inline-block;
+            border: 2px solid #0f1035;
+            border-radius: 5px;
+            margin-left: 10px;
+            box-shadow: 0 10px 10px 0 #dfdfdf;
+            height: 300px;
+        }
+
+        .car-image p {
+            text-align: center;
+            margin-bottom: 2px;
+            color: #0f1035;
+            font-size: 20px;
+        }
+
+        .car-image img {
+            width: 450px;
+            height: 250px;
+        }
+
+        .car-image h2 {
+            text-align: center;
+            color: #0f1035;
+            font-weight: bold;
+        }
+
+        /* Styles for the car information container */
+        .car-info {
+            display: inline-block;
+        }
+
+        .car-info #name {
+            font-size: 60px;
+            font-weight: bold;
+            color: #ffffff;
+            text-shadow: -1px -1px 0 #0f1035, 1px -1px 0 #0f1035, -1px 1px 0 #0f1035, 1px 1px 0 #0f1035;
+            margin: 0;
+            margin-top: 200px;
+            margin-left: 20px;
+        }
+
+        #owner-dtl {
+            float: right;
+        }
+
+        /* Styles for the car details and booking section */
+        .car-det-book {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 30px; /* Adjust margin as needed */
+        }
+
+        .car-det-book p {
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .car-det-book #car-detail-loop {
+            margin: 8px 0;
+            display: inline-block;
+            padding: 10px;
+            background-color: #365486;
+            border-radius: 3px;
+            color: #dcf2f1;
+            border: 2px solid #0f1035;
+            margin-bottom: 8px;
+        }
+
+        .car-det-book #car-detail-loop:hover {
+            background-color: #dcf2f1;
+            color: #0f1035;
+        }
+
+        .car-det-book a {
+            padding: 20px 30px;
+            background-color: #8f9fa5;
+            margin: 10px 0 20px; 
+            border-radius: 5px;
+            border: 2px solid #0f1035;
+            text-decoration: none;
+            color: #0f1035;
+        }
+
+        .car-det-book a:hover {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Include the navigation bar -->
+    {% include 'navbar.html' %}
+
+    <!-- Container for car details -->
+    <div class="car-details">
+        <!-- Car image container -->
+        <div class="car-image">
+            <img src="{{ url_for('static', filename='uploads/' + car.image_filepath) }}" alt="Car Image">
+            <p>Price Per Day: ₹ {{ car.price_per_day }}</p>
+        </div>
+
+        <!-- Car information container -->
+        <div class="car-info">
+            <h2 id="name">{{ car.car_name }}</h2>
+            <div id="owner-dtl">
+                <p style="color:#0f1035;">Owner: {{ car.first_name }} {{ car.last_name }}</p>
+                <a href="mailto:{{car.email}} " style="color:#365486;text-decoration: none;font-weight: bold;">Email: {{ car.email }}</a>
+            </div>
+        </div>
+
+        <!-- Car details and booking section -->
+        <div class="car-det-book">
+            <!-- Car details -->
+            <p style="font-size:30px; color:#0f1035;">Car Details <br>
+                <p style="margin-left: 10px; margin-top:5px">
+                    {% for detail in car.car_details.split('\n') %}
+                    {% if detail.strip() != '' %}
+                    <p id="car-detail-loop">{{ detail }}</p>
+                    {% endif %}
+                    {% endfor %}
+                </p>
+            </p><br><br>
+
+            <!-- Booking link -->
+            <a href="/bookNow/{{ car.id }}">Book Now</a>
+        </div>
+    </div>
+
+    <!-- Include the footer -->
+    {% include 'footer.html' %}
+
+</body>
+
+</html>

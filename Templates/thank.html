@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <!-- Page title -->
+    <title>Thank You</title>
+    
+    <!-- CSS styles for the page -->
+    <style>
+        /* Styling for the background image container */
+        #back-image {
+            background: url('/static/car-logo.png');
+            border: 2px solid #0f1035;
+            border-radius: 450px;
+            height: 500px;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position-x: center;
+            box-shadow: 0 10px 10px 0 #365486;
+            background-color: white;
+        }
+
+        /* Styling for the thank you message */
+        .thank-msg {
+            width: auto;
+            height: 40px;
+            text-align: center;
+            color: #0f1035;
+            margin-top: 100px;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Include the navigation bar -->
+    {% include 'navbar.html' %}
+    
+    <!-- Thank you message section -->
+    <div class="thank-msg">
+        Thank you for choosing us!
+    </div>
+    
+    <!-- Background image container -->
+    <div id="back-image"></div>
+    
+    <!-- Include the footer -->
+    {% include 'footer.html' %}
+    
+    <!-- JavaScript script for redirection and displaying alerts -->
+    <script>
+        // Function to redirect to index.html
+        function redirectToIndex() {
+            window.location.replace("/"); // Change the URL as needed
+        }
+
+        // Redirect to index.html after a brief delay
+        setTimeout(redirectToIndex, 3000); // 3000 milliseconds (3 seconds) delay
+    </script>
+
+    <!-- JavaScript script to display alerts if 'msg' variable is present -->
+    {% if msg %}
+        <script>
+            alert("{{msg|safe}}");
+        </script>
+    {% endif %}
+</body>
+</html>

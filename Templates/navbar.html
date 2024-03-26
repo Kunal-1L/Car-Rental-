@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <!-- Link to your CSS file for styling -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style1.css') }}">
+    <title>Image Upload</title>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <!-- Logo Image -->
+        <img src="{{ url_for('static', filename='car-logo.png') }}" alt="Logo" class="nav_logo">
+        
+        <!-- Navigation Links -->
+        <div class="nav_item">
+            <a href="/home" class="nav_link">Home</a>
+            <a href="/gallery" class="nav_link">Reservation</a>
+            <a href="/about" class="nav_link">About Us</a>
+            <a href="/contact" class="nav_link">Contact</a>
+            
+            <!-- Conditional Link for Logged In Users -->
+            {% if logged_in %}
+                <div class="dropdown">
+                    <button class="dropbtn">My Profile</button>
+                    <div class="dropdown-content">
+                    <a href="/profile">Profile</a>
+                    <a href="/logout">Log Out</a>
+                    <a href="/delAccount">Delete Account</a>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

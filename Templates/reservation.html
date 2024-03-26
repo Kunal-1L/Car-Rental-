@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Reservation Form</title>
+    <style>
+        /* Styling for the reservation form */
+        .sub-body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .reservation_form {
+            background-color: #fff;
+            box-shadow: 0 0 10px #365486;
+            padding: 20px;
+            border-radius: 5px;
+            width: 350px;
+            margin-top: 100px;
+            margin-bottom: 10px;
+        }
+
+        .reservation_details label {
+            font-weight: bold;
+            padding: 10px 0;
+            margin-left: 30px;
+            color: #0f1035;
+        }
+
+        .reservation_details input,
+        textarea {
+            width: 80%;
+            padding: 8px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            margin-left: 30px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #365486;
+            color: white;
+            cursor: pointer;
+            width: 80px;
+            margin-left: 30px;
+            padding: 8px 15px;
+        }
+
+        button:hover {
+            background-color: #dcf2f1;
+            color: #365486;
+        }
+    </style>
+</head>
+<body>
+    <!-- Container for the reservation form -->
+    <div class="sub-body">
+        {% include 'navbar.html' %}
+        <!-- Reservation Form -->
+        <div class="reservation_form">
+            <div class="reservation_details">
+                <!-- Form for car reservation -->
+                <form action="/reserved" method="post" id="reservationForm">
+                    <!-- Hidden input field to store the car ID -->
+                    <input type="hidden" name="car_id" value="{{ car_id }}">
+                    
+                    <label for="firstName">First Name:</label><br>
+                    <input type="text" id="firstName" name="firstName" required placeholder="First Name">
+            
+                    <br>
+            
+                    <label for="lastName">Last Name:</label><br>
+                    <input type="text" id="lastName" name="lastName" required placeholder="Last Name">
+            
+                    <br>
+
+                    <label for="pickUP">Pick-up</label>
+                    <input type="date" id="pickUpDate" name="pickUpDate" required>
+                    <input type="time" id="pickUpTime" name="pickUpTime" required>
+                    
+                    <br>
+
+                    <label for="dropOff">Drop-off</label>
+                    <input type="date" id="dropOffDate" name="dropOffDate" required>
+                    <input type="time" id="dropOffTime" name="dropOffTime" required>
+                    
+                    <!-- Submit button for the reservation form -->
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include the footer -->
+    {% include 'footer.html' %}
+
+    <script>
+        // Function to reset form fields
+        function resetForm() {
+            var reservationForm = document.getElementById('reservationForm');
+            reservationForm.reset();
+        }
+    
+        // Add a script to reset the form fields when the page is loaded
+        window.onload = function () {
+            resetForm();
+        };
+    
+        // Add an event listener to reset the form fields when using the back button
+        window.addEventListener('popstate', function (event) {
+            resetForm();
+        });
+    </script>
+</body>
+</html>
