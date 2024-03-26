@@ -42,7 +42,6 @@ class User(db.Model):
 class Reservation(db.Model):
     __tablename__ = 'reservation'  # Add this line to explicitly set the table name
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, nullable = False)
     car_id = db.Column(db.Integer, nullable=False)
     first_name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
@@ -102,7 +101,6 @@ def login():
         if user:
             # Set the 'logged_in' session variable to True
             session['logged_in'] = True
-            session['user_id'] = user.id
             msg = 'Login successful!'
             
             # Redirect to the 'home' route after successful login
@@ -313,11 +311,9 @@ def reserved():
 
         # Calculate the bill based on car price per day and number of days
         bill = int(car.price_per_day) * num_of_days
-        user_id = session['user_id']
         # Store reservation details in the database
         with app.app_context():
             new_reservation = Reservation(
-                user_id = user_id,
                 car_id=car_id,
                 first_name=first_name,
                 last_name=last_name,
@@ -366,11 +362,6 @@ def contact():
 @app.route('/footer')
 def footer():
     return render_template('footer.html')
-
-@app.route('/profile')
-def profile():
-    user = User.query.filter_by(id = session['user_id']).first()
-    return render_template('profile.html', user = user)
 
 # Run the Flask app
 if __name__ == '__main__':
